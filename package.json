@@ -1,0 +1,29 @@
+{
+  "name": "webdproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manas2403/WebDProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manas2403/WebDProject/issues"
+  },
+  "homepage": "https://github.com/Manas2403/WebDProject#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5",
+    "mongoose-paginate-v2": "^1.7.1",
+    "passport": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
