@@ -1,0 +1,6 @@
+<div class="navbar-nav center-nav">
+    <a href="/" class="nav-item nav-link">Home</a> 
+    <% for(let i=0;i<tags.length;i++){%> 
+        <a href="/posts/<%=tags.links[i]%>" class="nav-item nav-link"><%=tags.name[i]%></a> 
+    <%}%>
+</div>
