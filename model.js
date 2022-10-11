@@ -10,7 +10,7 @@ const TagSchema = new mongoose.Schema({
     }
 })
 
-const Tag = mongoose.Model("Tag", TagSchema);
+const Tag = mongoose.model("Tag", TagSchema);
 
 const PostSchema = new mongoose.Schema({
     title: String,
@@ -28,13 +28,14 @@ const PostSchema = new mongoose.Schema({
     }],
     tag:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Tag"
+        ref: "Tag",
+        required: true
     }
-})
+},{ timestamps: true })
 
 PostSchema.plugin(mongoosePaginate);
 
-const Post = mongoose.Model("Post", PostSchema);
+const Post = mongoose.model("Post", PostSchema);
 
 module.exports.Post = Post;
 module.exports.Tag = Tag;

@@ -6,34 +6,38 @@ const {Post, Tag} = require("./model");
 const DEFAULT_QUERY_PAGE = 1;
 const DEFAULT_QUERY_PERPAGE = 10;
 
-async function getAllTags(req, res) {
-    const tags = Tag.find({}, {name: 1, _id:0});
-    return res.status(200).json(tags);
-}
+// async function getAllTags(req, res) {
+//     const tags = Tag.find({}, {name: 1, _id:0});
+//     return res.status(200).json(tags);
+// }
 
 async function getPaginatedPosts(req, res){
-    var page = req.query.page ? Math.max(1, Number(req.query.page)) : DEFAULT_QUERY_PAGE;
-    var perpage = Number(req.query.perpage) || DEFAULT_QUERY_PERPAGE;
-
+    let data ={};
+    data.tags = req.tags;
     const query = {
-        "tag.name" : req.params.tag
+        // "tag.name" : req.params.tag,
     };
-
+    req.params.tag = req.params.tag.replace(/\+/g, " ")
     let options = {
-        page: page,
-        limit: perpage,
         populate: {
-            path: "tag"
+            path: "tag",
+            select : "name -_id",
+            match: {
+                "name": req.params.tag
+            }
         },
-        select:"title desc links people tag.name"
+        select:"title desc links people tag updatedAt",
+        order:{
+            "updatedAt": -1            
+        }
     }
-
-    let posts = await Post.paginate(query, options);
-    return res.status(200).json(posts);
+    data.posts = await Post.find(query).select(options.select).populate(options.populate).sort(options.order);
+    data.posts = data.posts.filter((post)=>{return post.tag!==null;})
+    return res.status(200).json(data);
 }
 
 
-router.get("/tags", getAllTags);
+// router.get("/tags", getAllTags);
 router.get("/posts/:tag", getPaginatedPosts);
 
 module.exports = router;
