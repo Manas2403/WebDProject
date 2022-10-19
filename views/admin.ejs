@@ -31,6 +31,7 @@
   </head>
   <body>
     <div><h1>Admin Page</h1></div>
+    <% if(!user){ %>
     <form action="" method="post">
       <div class="form-group">
         <label for="username">
@@ -58,14 +59,16 @@
       </div>
       <button type="submit" class="btn btn-primary mb-5">Login</button>
     </form>
+    <% } else{ %>
     <div class="btn-container">
-      <a href="/form.html">
+      <a href="/admin/newpost">
         <button class="btn btn-primary">Add Article</button>
       </a>
-      <a href="/tag.html">
+      <a href="/admin/newtag">
         <button class="btn btn-primary">Add Tag</button>
       </a>
     </div>
+    <% } %>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

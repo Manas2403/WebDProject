@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const path = require("path");
 const mongoose = require("mongoose");
 const { Tag } = require("./model");
@@ -24,9 +25,11 @@ mongoose
     console.log("connected to db");
   });
 
+app.use(cookieParser());
+
 app.use(async (req, res, next) => {
   req.tags = {};
-  tags = await Tag.find({}, { name: 1, _id: 0 });
+  let tags = await Tag.find({}, { name: 1, _id: 0 });
   req.tags.name = [];
   req.tags.links = [];
   req.tags.length = tags.length;
