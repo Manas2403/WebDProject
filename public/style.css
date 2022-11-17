@@ -39,22 +39,27 @@ html {
     font-weight: bold;
 }
 .desc-pos {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 400;
 }
-.desc-pos span {
-    font-size: 1rem;
+.desc-pos div {
+    margin-bottom: 1rem;
+    margin-top: -0.3rem;
+    color: green;
+    margin-left: 0.1rem;
+    font-size: 1.2rem;
     font-weight: 200;
 }
 .social {
+    width: fit-content;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     cursor: pointer;
 }
 .education-timeline-el {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 .education-timeline-desc {
     display: flex;
@@ -62,7 +67,7 @@ html {
 }
 .achievements-timeline-el {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 .achievements-timeline-desc {
     display: flex;
@@ -99,7 +104,7 @@ html {
     background-color: white;
     gap: 3rem;
     padding: 3rem;
-    width: 80%;
+    width: 78%;
     border-radius: 8px;
 }
 .profile-img {
@@ -117,6 +122,9 @@ html {
     .about-container,
     .profile-container {
         width: 90%;
+    }
+    .profile-container{
+        width: 88%;
     }
 }
 .about-container p {
@@ -143,9 +151,13 @@ html {
     margin: 0;
 }
 /* Media Queries */
-@media (max-width: 500px) {
-    .nav-item {
-        font-size: 3vmin;
+
+@media (max-width: 991px) {
+    .ext-box{
+        margin: 1rem;
+    }
+    .profile-container{
+        width: 84%;
     }
 }
 @media (max-width: 830px) {
@@ -155,21 +167,121 @@ html {
         padding: 1rem;
         flex-direction: column;
     }
+    .profile-container{
+        width: 89%;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    .desc{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
 }
-@media (max-width: 350px) {
-    .profile-container img {
-        height: 200px;
+@media (max-width: 650px) {
+    .profile-container{
+        width: 85%;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .profile-container{
+        width: 82%;
+    }
+
+    .profile-img{
+        width: 70%;
+        height: 70%;
+        margin-bottom: -2rem;
     }
 }
+
 @media (max-width: 450px) {
     .ext-box {
-        padding: 0;
+        padding: 1rem;
+    }
+    .profile-container{
+        width: 85%;
+    }
+    .profile-img{
+        width: 70%;
+        height: 70%;
+    }
+    hr{
+        margin: 0.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .int-box h2{
+        font-size: 1.25rem;
     }
     .about-container p {
-        font-size: 1rem;
+        font-size: 0.75rem;
     }
     p {
         font-size: 1rem;
+    }
+    .footer-desc p{
+        font-size: 0.75rem;
+    }
+    .education-timeline-el {
+    display: flex;
+    gap: 0.75rem;
+}
+.education-timeline-desc {
+    display: flex;
+    flex-direction: column;
+}
+.achievements-timeline-el {
+    display: flex;
+    gap: 0.75rem;
+}
+.about-container{
+    padding: 0;
+}
+.desc-title{
+font-size: 1.75rem;
+}
+.desc-pos{
+    font-size: 1.1rem;
+}
+.desc-pos div{
+    font-size: 0.8rem;
+    padding-top: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+}
+@media (max-width: 350px) {
+
+    .education-timeline-el {
+    display: flex;
+    gap: 0.5rem;
+}
+.education-timeline-desc {
+    display: flex;
+    flex-direction: column;
+}
+.achievements-timeline-el {
+    display: flex;
+    gap: 0.5rem;
+}
+.desc-title{
+font-size: 1.4rem;
+}
+.desc-pos{
+    font-size: 1rem;
+}
+.desc-pos div{
+    font-size: 0.75rem;
+    padding-top: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.profile-img{
+        width: 80%;
+        height: 80%;
     }
 }
 /* Custom Scrollbar */
