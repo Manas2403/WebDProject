@@ -1,8 +1,13 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const { Post, Tag } = require("./model");
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 
 module.exports = router;
 
@@ -11,7 +16,7 @@ router.use((req, res, next) => {
     if (req.cookies.secret) {
         jwt.verify(
             req.cookies.secret,
-            "rf01Amaio2974bnxc77fa93h3hbnc93280a",
+            process.env.SECRET,
             (err, data) => {
                 if (data.trust === "admin_4598") {
                     req.user = true;
@@ -24,8 +29,8 @@ router.use((req, res, next) => {
 
 async function login(req, res) {
     if (
-        req.body.username === "admin_4598" &&
-        req.body.password === "FTSI-istf"
+        req.body.username === process.env.ADMIN_USERNAME &&
+        req.body.password === process.env.ADMIN_PASSWORD
     ) {
         res.cookie(
             "secret",
@@ -34,7 +39,7 @@ async function login(req, res) {
                     trust: req.body.username,
                     exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
                 },
-                "rf01Amaio2974bnxc77fa93h3hbnc93280a"
+                process.env.SECRET
             ),
             { maxAge: 24 * 60 * 60, httpOnly: true, secure: true }
         );
