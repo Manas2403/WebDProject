@@ -94,7 +94,9 @@ html {
 .sec h1 {
     font-size: 2rem;
 }
-.sec-authors {
+
+.authors {
+    display: none;
 }
 /* Home  */
 .parent-container {
