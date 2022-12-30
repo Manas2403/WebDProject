@@ -4,6 +4,8 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const mongoose = require("mongoose");
 const { Tag } = require("./model");
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 
@@ -15,7 +17,7 @@ app.use("/", express.static(__dirname + "/public"));
 
 mongoose
   .connect(
-    "mongodb+srv://admin:pVzqSUxXFKLATeVw@cluster0.lelomd6.mongodb.net/?retryWrites=true&w=majority",
+    process.env.MONGO_CONN_STRING,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
